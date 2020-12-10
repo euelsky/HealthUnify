@@ -45,6 +45,7 @@ public class TestsForBMI {
         Assert.assertEquals(actualCategoryText, expectedCategoryText, "incorrect");
     }
 
+    @Test
 
 
 }
