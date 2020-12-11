@@ -46,6 +46,36 @@ public class TestsForBMI {
     }
 
     @Test
+    public void errorPopupText() {
+        System.setProperty("webdriver.chrome.driver", "/Users/eugeneuielski/BMIcalc/src/test/resources/chromedriver");
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://healthunify.com/bmicalculator/");
+        driver.findElement(By.name("cc")).click();
+        driver.switchTo().alert().getText();
+        String actualErrorText = driver.switchTo().alert().getText();
+        String expectedErrorText = "Enter the value for weight";
+        Assert.assertEquals(actualErrorText, expectedErrorText, "incorrect");
+    }
+
+    @Test
+    public void emptyFieldsResult() {
+        System.setProperty("webdriver.chrome.driver", "/Users/eugeneuielski/BMIcalc/src/test/resources/chromedriver");
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://healthunify.com/bmicalculator/");
+        driver.findElement(By.name("cc")).click();
+        driver.switchTo().alert().getText();
+        driver.switchTo().alert().accept();
+        String actualSiValue = driver.findElement(By.name("si")).getAttribute("value");
+        String expectedSIvalue = "NaN";
+        Assert.assertEquals(actualSiValue, expectedSIvalue, "incorrect");
+        String actualUSValue = driver.findElement(By.name("us")).getAttribute("value");
+        String expectedUSvalue = "NaN";
+        Assert.assertEquals(actualUSValue, expectedUSvalue, "incorrect");
+        String actualUKValue = driver.findElement(By.name("uk")).getAttribute("value");
+        String expectedUKvalue = "NaN";
+        Assert.assertEquals(actualUKValue, expectedUKvalue, "incorrect");
+    }
+    @Test
 
 
 }
