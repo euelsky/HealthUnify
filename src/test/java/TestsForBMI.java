@@ -9,11 +9,7 @@ import java.util.Random;
 
 public class TestsForBMI {
 
-    Random wg = new Random();
-    int rw = wg.nextInt();
-
-
-        @Test
+    @Test
     public void normalweight() {
         System.setProperty("webdriver.chrome.driver", "/Users/eugeneuielski/BMIcalc/src/test/resources/chromedriver");
         WebDriver driver = new ChromeDriver();
@@ -82,8 +78,9 @@ public class TestsForBMI {
         String expectedUKvalue = "NaN";
         Assert.assertEquals(actualUKValue, expectedUKvalue, "incorrect");
     }
+
     @Test
-    public void minWeight(){
+    public void minWeight() {
 
         System.setProperty("webdriver.chrome.driver", "/Users/eugeneuielski/BMIcalc/src/test/resources/chromedriver");
         WebDriver driver = new ChromeDriver();
@@ -98,21 +95,21 @@ public class TestsForBMI {
     }
 
     @Test
-    public void minHeight(){
-            System.setProperty("webdriver.chrome.driver", "/Users/eugeneuielski/BMIcalc/src/test/resources/chromedriver");
-            WebDriver driver = new ChromeDriver();
-            driver.get("https://healthunify.com/bmicalculator/");
-            driver.findElement(By.name("wg")).sendKeys("11");
-            Select hgOpt2 = new Select(driver.findElement(By.name("opt2")));
-            hgOpt2.selectByValue("1");
-            Select hgOpt3 = new Select(driver.findElement(By.name("opt3")));
-            hgOpt3.selectByValue("1");
-            String actualSiValue = driver.findElement(By.name("si")).getAttribute("value");
-            String expectedSIvalue = "101.01";
-            hgOpt3.selectByValue("0");
-            driver.findElement(By.name("cc")).click();
-            String actualErrorTextMinHG = driver.switchTo().alert().getText();
-            String expectedErrorTextMinHG = "Height should be taller than 33cms";
+    public void minHeight() {
+        System.setProperty("webdriver.chrome.driver", "/Users/eugeneuielski/BMIcalc/src/test/resources/chromedriver");
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://healthunify.com/bmicalculator/");
+        driver.findElement(By.name("wg")).sendKeys("11");
+        Select hgOpt2 = new Select(driver.findElement(By.name("opt2")));
+        hgOpt2.selectByValue("1");
+        Select hgOpt3 = new Select(driver.findElement(By.name("opt3")));
+        hgOpt3.selectByValue("1");
+        String actualSiValue = driver.findElement(By.name("si")).getAttribute("value");
+        String expectedSIvalue = "101.01";
+        hgOpt3.selectByValue("0");
+        driver.findElement(By.name("cc")).click();
+        String actualErrorTextMinHG = driver.switchTo().alert().getText();
+        String expectedErrorTextMinHG = "Height should be taller than 33cms";
 
     }
 
